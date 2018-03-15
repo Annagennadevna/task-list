@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
     Route::resource('/tasks','TaskController', ['as'=>'admin']);
+    Route::get('/blog/search', 'BlogController@search')->name('search');
 });

@@ -68,6 +68,16 @@ class contactcontroller extends Controller
      * @param  \App\contact  $contact
      * @return \Illuminate\Http\Response
      */
+     public function search(Request $request)
+{
+    $search = $request->input('search');
+    $article = Article::where('published', 1)->search($search)->paginate(12);
+    return view('blog.search', [
+      'search' => $search,
+      'articles' => $article
+    ]);
+}
+
     public function update(Request $request, contact $contact)
     {
         //
